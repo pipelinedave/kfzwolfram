@@ -127,6 +127,19 @@ section:nth-child(even) {
   box-shadow: var(--shadow-1);
 }
 
+/* Legal notice section */
+#legal-notice {
+  background-color: var(--surface-variant);
+  font-size: 0.9rem;
+  color: var(--on-surface-variant);
+}
+
+#legal-notice .dispute-resolution {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
 /* Footer styling */
 footer {
   margin-top: auto;
@@ -139,9 +152,19 @@ footer {
 footer nav ul {
   list-style: none;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  gap: 2rem;
+  gap: 1.5rem;
   margin-top: 1rem;
+  padding: 0 1rem;
+}
+
+@media (max-width: 600px) {
+  footer nav ul {
+    gap: 1rem;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 footer a {
