@@ -3,43 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="KFZ Wolfram - Gebrauchtwagenhandel in Deutschland">
-    <meta name="keywords" content="KFZ Wolfram, Gebrauchtwagen, Auto, Händler, Deutschland">
+    <meta name="description" content="KFZ Wolfram - Ihr vertrauenswürdiger Gebrauchtwagenhändler in Bad Honnef. Große Auswahl an qualitativ hochwertigen Gebrauchtwagen zu fairen Preisen.">
+    <meta name="keywords" content="KFZ Wolfram, Gebrauchtwagen, Auto, Händler, Bad Honnef, Autohandel, gebrauchte Autos">
     <meta name="author" content="KFZ Wolfram">
-    <title>KFZ Wolfram - Gebrauchtwagenhandel</title>
+
+    <!-- Social Media Meta Tags -->
+    <meta property="og:title" content="KFZ Wolfram - Gebrauchtwagenhändler in Bad Honnef">
+    <meta property="og:description" content="Ihr vertrauenswürdiger Partner für Gebrauchtwagen in Bad Honnef. Besuchen Sie uns und finden Sie Ihr Traumauto!">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://kfz-wolfram.de">
+
+    <title>KFZ Wolfram - Gebrauchtwagenhändler in Bad Honnef</title>
     <link rel="stylesheet" href="style.css">
+
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "AutoDealer",
+        "name": "KFZ Wolfram",
+        "description": "Vertrauenswürdiger Gebrauchtwagenhändler in Bad Honnef",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Rottbitzer Str. 32",
+            "addressLocality": "Bad Honnef",
+            "postalCode": "53604",
+            "addressCountry": "DE"
+        },
+        "telephone": "+49 1520 5907647",
+        "url": "https://kfz-wolfram.de",
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "50.6493",
+            "longitude": "7.2285"
+        },
+        "openingHours": "Mo-Sa 09:00-18:00"
+    }
+    </script>
+
+    <!-- Google Maps API -->
+    <script async src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
+    <script>
+        function initMap() {
+            const location = { lat: 50.6493, lng: 7.2285 };
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 15,
+                center: location,
+            });
+            const marker = new google.maps.Marker({
+                position: location,
+                map: map,
+                title: "KFZ Wolfram"
+            });
+        }
+    </script>
 </head>
 <body>
     <header>
         <h1>KFZ Wolfram</h1>
-        <p>Ihr zuverlässiger Gebrauchtwagenhändler in Deutschland</p>
+        <p>Ihr zuverlässiger Gebrauchtwagenhändler in Bad Honnef</p>
     </header>
 
     <section id="contact-info">
         <h2>Kontakt</h2>
         <ul>
-            <li>Adresse: Musterstraße 123, 12345 Musterstadt, Deutschland</li>
-            <li>Telefon: +49 123 456789</li>
-            <li>Email: <a href="mailto:info@kfz-wolfram.de">info@kfz-wolfram.de</a></li>
+            <li><strong>Adresse:</strong> Rottbitzer Str. 32, 53604 Bad Honnef, Deutschland</li>
+            <li><strong>Telefon:</strong> <a href="tel:+4915205907647">+49 1520 5907647</a></li>
+            <li><strong>Email:</strong> <a href="mailto:info@kfz-wolfram.de">info@kfz-wolfram.de</a></li>
+            <li><strong>Öffnungszeiten:</strong> Mo-Sa 09:00-18:00</li>
         </ul>
     </section>
 
     <section id="car-listings">
         <h2>Unsere aktuellen Gebrauchtwagen</h2>
-        <p>Besuchen Sie unsere Portfolios:</p>
+        <p>Entdecken Sie unsere Fahrzeuge auf diesen Plattformen:</p>
         <ul>
-            <li><a href="https://www.mobile.de" target="_blank">Mobile.de</a></li>
-            <li><a href="https://www.autoscout24.de" target="_blank">AutoScout24.de</a></li>
+            <li><a href="https://www.mobile.de/haendler/kfzwolfram" target="_blank" rel="noopener">Mobile.de</a></li>
+            <li><a href="https://www.autoscout24.de/haendler/kfzwolfram" target="_blank" rel="noopener">AutoScout24.de</a></li>
         </ul>
     </section>
 
     <section id="google-maps">
         <h2>Unser Standort</h2>
-        <p>Hier könnte Ihre Google Maps Integration kommen.</p>
+        <div id="map" aria-label="Standort von KFZ Wolfram" role="application"></div>
     </section>
 
     <footer>
         <p>&copy; 2025 KFZ Wolfram. Alle Rechte vorbehalten.</p>
+        <nav>
+            <ul>
+                <li><a href="#contact-info">Kontakt</a></li>
+                <li><a href="#car-listings">Fahrzeuge</a></li>
+            </ul>
+        </nav>
     </footer>
 </body>
 </html>

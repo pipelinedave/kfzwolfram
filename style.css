@@ -1,56 +1,192 @@
-/* Reset some default styles */
-body, h1, h2, p, ul, li, a {
+:root {
+  /* Material You color palette */
+  --primary-color: #0073e6;
+  --on-primary: #ffffff;
+  --surface: #ffffff;
+  --surface-variant: #f4f4f4;
+  --on-surface: #333333;
+  --on-surface-variant: #666666;
+
+  /* Typography */
+  --font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  /* Elevation */
+  --shadow-1: 0 2px 4px rgba(0,0,0,0.1);
+  --shadow-2: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Reset and base styles */
+*, *::before, *::after {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
 }
 
-/* Basic styling for the page */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background-color: #f4f4f4;
-  color: #333;
+  font-family: var(--font-family);
+  background-color: var(--surface);
+  color: var(--on-surface);
   line-height: 1.6;
-  padding: 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
+/* Typography */
+h1, h2 {
+  color: var(--on-surface);
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 2.5rem);
+}
+
+h2 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+/* Layout components */
 header {
-  background-color: #0073e6;
-  color: #fff;
-  padding: 10px;
+  background-color: var(--primary-color);
+  color: var(--on-primary);
+  padding: clamp(1rem, 5vh, 3rem) 1rem;
+  text-align: center;
+  box-shadow: var(--shadow-1);
+}
+
+header p {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  opacity: 0.9;
+}
+
+section {
+  padding: clamp(2rem, 5vh, 4rem) clamp(1rem, 5vw, 3rem);
+  background-color: var(--surface);
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1200px;
+}
+
+section:nth-child(even) {
+  background-color: var(--surface-variant);
+}
+
+/* Contact info styling */
+#contact-info ul {
+  list-style: none;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+#contact-info li {
+  padding: 1rem;
+  background-color: var(--surface);
+  border-radius: 8px;
+  box-shadow: var(--shadow-1);
+  transition: box-shadow 0.3s ease;
+}
+
+#contact-info li:hover {
+  box-shadow: var(--shadow-2);
+}
+
+/* Car listings styling */
+#car-listings ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+#car-listings a {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--primary-color);
+  color: var(--on-primary);
+  text-decoration: none;
+  border-radius: 8px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#car-listings a:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-2);
+}
+
+/* Google Maps styling */
+#map {
+  height: 400px;
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: var(--shadow-1);
+}
+
+/* Footer styling */
+footer {
+  margin-top: auto;
+  background-color: var(--primary-color);
+  color: var(--on-primary);
+  padding: 2rem 1rem;
   text-align: center;
 }
 
-header h1 {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
+footer nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1rem;
 }
 
-#contact-info, #car-listings, #google-maps {
-  margin: 20px 0;
-}
-
-ul {
-  list-style-type: none;
-}
-
-ul li {
-  margin-bottom: 10px;
-}
-
-a {
-  color: #0073e6;
+footer a {
+  color: var(--on-primary);
   text-decoration: none;
+  opacity: 0.9;
+  transition: opacity 0.2s ease;
 }
 
-a:hover {
+footer a:hover {
+  opacity: 1;
   text-decoration: underline;
 }
 
-footer {
-  text-align: center;
-  font-size: 0.9rem;
-  margin-top: 20px;
-  padding: 10px;
-  background-color: #333;
-  color: #fff;
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Focus styles */
+:focus-visible {
+  outline: 3px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+  #contact-info ul {
+    grid-template-columns: 1fr;
+  }
+
+  #car-listings ul {
+    flex-direction: column;
+  }
+
+  #car-listings a {
+    display: block;
+    text-align: center;
+  }
+
+  #map {
+    height: 300px;
+  }
 }
