@@ -14,7 +14,8 @@
     <meta property="og:url" content="https://kfz-wolfram.de">
 
     <title>KFZ Wolfram - Gebrauchtwagenhändler in Bad Honnef</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="preload" href="style.css?v=1" as="style">
+    <link rel="stylesheet" href="style.css?v=1">
 
     <!-- Schema.org structured data -->
     <script type="application/ld+json">
@@ -42,8 +43,20 @@
     </script>
 
     <!-- Google Maps API -->
-    <script async src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
     <script>
+        // Load Google Maps API dynamically with key from environment
+        function loadGoogleMaps() {
+            const script = document.createElement('script');
+            script.src = `https://maps.googleapis.com/maps/api/js?key=${getGoogleMapsKey()}&callback=initMap`;
+            script.async = true;
+            document.head.appendChild(script);
+        }
+
+        function getGoogleMapsKey() {
+            // In production, this will be replaced with the actual key during CI/CD
+            return 'GOOGLE_MAPS_API_KEY';
+        }
+
         function initMap() {
             const location = { lat: 50.6493, lng: 7.2285 };
             const map = new google.maps.Map(document.getElementById("map"), {
@@ -56,12 +69,17 @@
                 title: "KFZ Wolfram"
             });
         }
+
+        // Load Maps API when the page is ready
+        window.addEventListener('load', loadGoogleMaps);
     </script>
 </head>
 <body>
     <header>
-        <h1>KFZ Wolfram</h1>
-        <p>Ihr zuverlässiger Gebrauchtwagenhändler in Bad Honnef</p>
+        <a href="#" class="header-content">
+            <h1>KFZ Wolfram</h1>
+            <p>Ihr zuverlässiger Gebrauchtwagenhändler in Bad Honnef</p>
+        </a>
     </header>
 
     <section id="contact-info">

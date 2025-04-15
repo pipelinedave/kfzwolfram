@@ -1,18 +1,21 @@
 :root {
-  /* Material You color palette */
-  --primary-color: #0073e6;
-  --on-primary: #ffffff;
+  /* Modern color palette */
+  --primary-color: #2563eb;
+  --primary-light: #60a5fa;
+  --primary-dark: #1e40af;
   --surface: #ffffff;
-  --surface-variant: #f4f4f4;
-  --on-surface: #333333;
-  --on-surface-variant: #666666;
+  --surface-variant: #f8fafc;
+  --on-surface: #0f172a;
+  --on-surface-variant: #475569;
+  --accent: #f97316;
 
   /* Typography */
-  --font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 
   /* Elevation */
-  --shadow-1: 0 2px 4px rgba(0,0,0,0.1);
-  --shadow-2: 0 4px 8px rgba(0,0,0,0.1);
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
 }
 
 /* Reset and base styles */
@@ -50,128 +53,213 @@ h2 {
   font-size: clamp(1.5rem, 3vw, 2rem);
 }
 
-/* Layout components */
+/* Header styling */
 header {
-  background-color: var(--primary-color);
-  color: var(--on-primary);
-  padding: clamp(1rem, 5vh, 3rem) 1rem;
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+  padding: clamp(2rem, 8vh, 5rem) 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at top right, var(--primary-light), transparent);
+  opacity: 0.4;
+}
+
+.header-content {
+  position: relative;
+  z-index: 1;
+  text-decoration: none;
+  display: block;
   text-align: center;
-  box-shadow: var(--shadow-1);
+  transition: transform 0.3s ease;
+}
+
+.header-content:hover {
+  transform: translateY(-2px);
+}
+
+header h1 {
+  color: var(--surface);
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 header p {
-  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: var(--surface);
+  font-size: clamp(1.1rem, 3vw, 1.5rem);
   opacity: 0.9;
-}
-
-section {
-  padding: clamp(2rem, 5vh, 4rem) clamp(1rem, 5vw, 3rem);
-  background-color: var(--surface);
+  max-width: 600px;
   margin: 0 auto;
-  width: 100%;
-  max-width: 1200px;
 }
 
-section:nth-child(even) {
-  background-color: var(--surface-variant);
+/* Section styling */
+section {
+  padding: clamp(3rem, 8vh, 6rem) clamp(1rem, 5vw, 3rem);
+  border-radius: 24px;
+  margin: 2rem auto;
+  max-width: 1200px;
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.3s ease;
+}
+
+section:hover {
+  box-shadow: var(--shadow-md);
 }
 
 /* Contact info styling */
 #contact-info ul {
-  list-style: none;
   display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 
 #contact-info li {
-  padding: 1rem;
-  background-color: var(--surface);
-  border-radius: 8px;
-  box-shadow: var(--shadow-1);
-  transition: box-shadow 0.3s ease;
+  background: var(--surface-variant);
+  padding: 1.5rem;
+  border-radius: 16px;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0,0,0,0.05);
 }
 
 #contact-info li:hover {
-  box-shadow: var(--shadow-2);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary-light);
+}
+
+#contact-info a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+#contact-info a:hover {
+  color: var(--primary-dark);
 }
 
 /* Car listings styling */
 #car-listings ul {
-  list-style: none;
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  margin-top: 2rem;
 }
 
 #car-listings a {
-  display: inline-block;
-  padding: 0.75rem 1.5rem;
-  background-color: var(--primary-color);
-  color: var(--on-primary);
+  display: block;
+  padding: 1.25rem 2rem;
+  background: var(--primary-color);
+  color: var(--surface);
   text-decoration: none;
-  border-radius: 8px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-radius: 12px;
+  text-align: center;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+#car-listings a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, transparent, rgba(255,255,255,0.1));
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 #car-listings a:hover {
   transform: translateY(-2px);
-  box-shadow: var(--shadow-2);
+  background: var(--primary-dark);
 }
 
-/* Google Maps styling */
+#car-listings a:hover::before {
+  opacity: 1;
+}
+
+/* Maps styling */
+#google-maps {
+  padding: 0;
+  overflow: hidden;
+}
+
 #map {
-  height: 400px;
+  height: 500px;
   width: 100%;
-  border-radius: 8px;
-  box-shadow: var(--shadow-1);
+  border-radius: 24px;
+  box-shadow: var(--shadow-md);
 }
 
 /* Footer styling */
 footer {
-  margin-top: auto;
-  background-color: var(--primary-color);
-  color: var(--on-primary);
-  padding: 2rem 1rem;
+  background: var(--surface-variant);
+  padding: 3rem 1rem;
   text-align: center;
+  border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+footer p {
+  color: var(--on-surface-variant);
+  margin-bottom: 1.5rem;
 }
 
 footer nav ul {
-  list-style: none;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1.5rem;
-  margin-top: 1rem;
-  padding: 0 1rem;
-}
-
-@media (max-width: 600px) {
-  footer nav ul {
-    gap: 1rem;
-    flex-direction: column;
-    align-items: center;
-  }
+  gap: 2rem;
 }
 
 footer a {
-  color: var(--on-primary);
+  color: var(--primary-color);
   text-decoration: none;
-  opacity: 0.9;
-  transition: opacity 0.2s ease;
+  font-weight: 500;
+  transition: color 0.2s ease;
 }
 
 footer a:hover {
-  opacity: 1;
-  text-decoration: underline;
+  color: var(--primary-dark);
 }
 
-/* Accessibility */
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  section {
+    border-radius: 16px;
+    margin: 1rem auto;
+  }
+
+  #contact-info ul,
+  #car-listings ul {
+    gap: 1rem;
+  }
+
+  footer nav ul {
+    gap: 1.5rem;
+    flex-direction: column;
+  }
+}
+
+/* Accessibility improvements */
 @media (prefers-reduced-motion: reduce) {
   * {
     animation: none !important;
     transition: none !important;
-    scroll-behavior: auto !important;
   }
 }
 
