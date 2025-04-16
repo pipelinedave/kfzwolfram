@@ -49,13 +49,13 @@
     <!-- Google Maps Implementation -->
     <script async defer>
         let map;
-        
+
         async function initMap() {
             const { Map } = await google.maps.importLibrary("maps");
             const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
-            
+
             const position = { lat: 50.6493, lng: 7.2285 };
-            
+
             map = new Map(document.getElementById("map"), {
                 zoom: 15,
                 center: position,
@@ -116,7 +116,7 @@
     </section>
 
     <footer>
-        <p>Made by <a href="https://lowlifehigh.tech" target="_blank" rel="noopener">lowlifehigh.tech</a></p>
+        <p>&copy; 2025 KFZ Wolfram. made by <a href="https://lowlifehigh.tech" target="_blank" rel="noopener">lowlifehigh.tech</a></p>
         <nav>
             <ul>
                 <li><a href="#contact-info">Kontakt</a></li>
