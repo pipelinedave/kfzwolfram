@@ -3,13 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- DNS prefetch and preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Language alternates -->
+    <link rel="alternate" hreflang="de" href="https://kfzwolfram.de/datenschutz.html" />
+    <link rel="alternate" hreflang="x-default" href="https://kfzwolfram.de/datenschutz.html" />
+
     <title>Datenschutzerklärung - KFZ Wolfram</title>
     <!-- Material Icons -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="preload" href="style.css?v=1" as="style">
     <link rel="stylesheet" href="style.css?v=1">
+
+    <!-- Enhanced breadcrumb schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "KFZ Wolfram",
+                "item": "https://kfzwolfram.de"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Datenschutzerklärung",
+                "item": "https://kfzwolfram.de/datenschutz.html"
+            }
+        ]
+    }
+    </script>
 </head>
 <body>
+    <!-- Skip to main content link -->
+    <a href="#main-content" class="skip-to-main-content">Zum Hauptinhalt springen</a>
+
     <header>
         <a href="index.html" class="header-content">
             <h1>Datenschutzerklärung</h1>
@@ -17,56 +51,69 @@
         </a>
     </header>
 
-    <section>
-        <h2>1. Datenschutz auf einen Blick</h2>
+    <main id="main-content" tabindex="-1">
+        <nav aria-label="Breadcrumb" class="breadcrumbs">
+            <ol>
+                <li><a href="/">Startseite</a></li>
+                <li aria-current="page">Datenschutzerklärung</li>
+            </ol>
+        </nav>
 
-        <h3>Allgemeine Hinweise</h3>
-        <p>Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können.</p>
+        <section aria-labelledby="privacy-overview">
+            <h2 id="privacy-overview">1. Datenschutz auf einen Blick</h2>
 
-        <h3>Datenerfassung auf dieser Website</h3>
-        <h4>Wer ist verantwortlich für die Datenerfassung auf dieser Website?</h4>
-        <p>Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Dessen Kontaktdaten können Sie dem Impressum dieser Website entnehmen.</p>
+            <h3>Allgemeine Hinweise</h3>
+            <p>Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können.</p>
 
-        <h4>Wie erfassen wir Ihre Daten?</h4>
-        <p>Ihre Daten werden zum einen dadurch erhoben, dass Sie uns diese mitteilen. Hierbei kann es sich z.B. um Daten handeln, die Sie in ein Kontaktformular eingeben.</p>
-        <p>Andere Daten werden automatisch oder nach Ihrer Einwilligung beim Besuch der Website durch unsere IT-Systeme erfasst. Das sind vor allem technische Daten (z.B. Internetbrowser, Betriebssystem oder Uhrzeit des Seitenaufrufs).</p>
+            <h3>Datenerfassung auf dieser Website</h3>
+            <h4>Wer ist verantwortlich für die Datenerfassung auf dieser Website?</h4>
+            <p>Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Dessen Kontaktdaten können Sie dem Impressum dieser Website entnehmen.</p>
 
-        <h4>Wofür nutzen wir Ihre Daten?</h4>
-        <p>Ein Teil der Daten wird erhoben, um eine fehlerfreie Bereitstellung der Website zu gewährleisten. Andere Daten können zur Analyse Ihres Nutzerverhaltens verwendet werden.</p>
+            <h4>Wie erfassen wir Ihre Daten?</h4>
+            <p>Ihre Daten werden zum einen dadurch erhoben, dass Sie uns diese mitteilen. Hierbei kann es sich z.B. um Daten handeln, die Sie in ein Kontaktformular eingeben.</p>
+            <p>Andere Daten werden automatisch oder nach Ihrer Einwilligung beim Besuch der Website durch unsere IT-Systeme erfasst. Das sind vor allem technische Daten (z.B. Internetbrowser, Betriebssystem oder Uhrzeit des Seitenaufrufs).</p>
 
-        <h3>Analyse-Tools und Tools von Drittanbietern</h3>
-        <p>Beim Besuch dieser Website kann Ihr Surf-Verhalten statistisch ausgewertet werden. Das geschieht vor allem mit Google Analytics.</p>
+            <h4>Wofür nutzen wir Ihre Daten?</h4>
+            <p>Ein Teil der Daten wird erhoben, um eine fehlerfreie Bereitstellung der Website zu gewährleisten. Andere Daten können zur Analyse Ihres Nutzerverhaltens verwendet werden.</p>
 
-        <h2>2. Allgemeine Hinweise und Pflichtinformationen</h2>
+            <h3>Analyse-Tools und Tools von Drittanbietern</h3>
+            <p>Beim Besuch dieser Website kann Ihr Surf-Verhalten statistisch ausgewertet werden. Das geschieht vor allem mit Google Analytics.</p>
+        </section>
 
-        <h3>Datenschutz</h3>
-        <p>Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend den gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.</p>
+        <section aria-labelledby="general-info">
+            <h2 id="general-info">2. Allgemeine Hinweise und Pflichtinformationen</h2>
 
-        <h3>Hinweis zur verantwortlichen Stelle</h3>
-        <p>Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:</p>
-        <p>KFZ Wolfram<br>
-        Rottbitzer Str. 32<br>
-        53604 Bad Honnef<br>
-        Deutschland</p>
-        <p>Telefon: +49 1520 5907647<br>
-        E-Mail: info@kfz-wolfram.de</p>
+            <h3>Datenschutz</h3>
+            <p>Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend den gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.</p>
 
-        <h3>Speicherdauer</h3>
-        <p>Soweit innerhalb dieser Datenschutzerklärung keine speziellere Speicherdauer genannt wurde, verbleiben Ihre personenbezogenen Daten bei uns, bis der Zweck für die Datenverarbeitung entfällt.</p>
+            <h3>Hinweis zur verantwortlichen Stelle</h3>
+            <p>Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:</p>
+            <p>KFZ Wolfram<br>
+            Rottbitzer Str. 32<br>
+            53604 Bad Honnef<br>
+            Deutschland</p>
+            <p>Telefon: +49 1520 5907647<br>
+            E-Mail: info@kfz-wolfram.de</p>
 
-        <h3>Hinweis zur Datenweitergabe in die USA</h3>
-        <p>Auf unserer Website sind unter anderem Tools von Unternehmen mit Sitz in den USA eingebunden. Wenn diese Tools aktiv sind, können Ihre personenbezogenen Daten an die US-Server der jeweiligen Unternehmen weitergegeben werden.</p>
+            <h3>Speicherdauer</h3>
+            <p>Soweit innerhalb dieser Datenschutzerklärung keine speziellere Speicherdauer genannt wurde, verbleiben Ihre personenbezogenen Daten bei uns, bis der Zweck für die Datenverarbeitung entfällt.</p>
 
-        <h2>3. Datenerfassung auf dieser Website</h2>
+            <h3>Hinweis zur Datenweitergabe in die USA</h3>
+            <p>Auf unserer Website sind unter anderem Tools von Unternehmen mit Sitz in den USA eingebunden. Wenn diese Tools aktiv sind, können Ihre personenbezogenen Daten an die US-Server der jeweiligen Unternehmen weitergegeben werden.</p>
+        </section>
 
-        <h3>Google Maps</h3>
-        <p>Diese Seite nutzt den Kartendienst Google Maps. Anbieter ist die Google Ireland Limited ("Google"), Gordon House, Barrow Street, Dublin 4, Irland.</p>
-        <p>Zur Nutzung der Funktionen von Google Maps ist es notwendig, Ihre IP-Adresse zu speichern. Diese Informationen werden in der Regel an einen Server von Google in den USA übertragen und dort gespeichert. Der Anbieter dieser Seite hat keinen Einfluss auf diese Datenübertragung.</p>
-        <p>Die Nutzung von Google Maps erfolgt im Interesse einer ansprechenden Darstellung unseres Online-Angebots und an einer leichten Auffindbarkeit der von uns auf der Website angegebenen Orte. Dies stellt ein berechtigtes Interesse im Sinne von Art. 6 Abs. 1 lit. f DSGVO dar.</p>
+        <section aria-labelledby="data-collection">
+            <h2 id="data-collection">3. Datenerfassung auf dieser Website</h2>
 
-        <h3>Ihre Rechte</h3>
-        <p>Sie haben jederzeit das Recht auf unentgeltliche Auskunft über Ihre gespeicherten personenbezogenen Daten, deren Herkunft und Empfänger und den Zweck der Datenverarbeitung und ggf. ein Recht auf Berichtigung oder Löschung dieser Daten. Hierzu sowie zu weiteren Fragen zum Thema personenbezogene Daten können Sie sich jederzeit an uns wenden.</p>
-    </section>
+            <h3>Google Maps</h3>
+            <p>Diese Seite nutzt den Kartendienst Google Maps. Anbieter ist die Google Ireland Limited ("Google"), Gordon House, Barrow Street, Dublin 4, Irland.</p>
+            <p>Zur Nutzung der Funktionen von Google Maps ist es notwendig, Ihre IP-Adresse zu speichern. Diese Informationen werden in der Regel an einen Server von Google in den USA übertragen und dort gespeichert. Der Anbieter dieser Seite hat keinen Einfluss auf diese Datenübertragung.</p>
+            <p>Die Nutzung von Google Maps erfolgt im Interesse einer ansprechenden Darstellung unseres Online-Angebots und an einer leichten Auffindbarkeit der von uns auf der Website angegebenen Orte. Dies stellt ein berechtigtes Interesse im Sinne von Art. 6 Abs. 1 lit. f DSGVO dar.</p>
+
+            <h3>Ihre Rechte</h3>
+            <p>Sie haben jederzeit das Recht auf unentgeltliche Auskunft über Ihre gespeicherten personenbezogenen Daten, deren Herkunft und Empfänger und den Zweck der Datenverarbeitung und ggf. ein Recht auf Berichtigung oder Löschung dieser Daten. Hierzu sowie zu weiteren Fragen zum Thema personenbezogene Daten können Sie sich jederzeit an uns wenden.</p>
+        </section>
+    </main>
 
     <footer>
         <p>Made by <a href="https://lowlifehigh.tech" target="_blank" rel="noopener">lowlifehigh.tech</a></p>

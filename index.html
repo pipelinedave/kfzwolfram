@@ -3,6 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- DNS prefetch and preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://maps.googleapis.com">
+    <link rel="dns-prefetch" href="https://maps.googleapis.com">
+
+    <!-- Language alternates -->
+    <link rel="alternate" hreflang="de" href="https://kfzwolfram.de" />
+    <link rel="alternate" hreflang="x-default" href="https://kfzwolfram.de" />
+
     <meta name="description" content="KFZ Wolfram - Ihr vertrauenswürdiger Gebrauchtwagenhändler in Bad Honnef. Große Auswahl an qualitativ hochwertigen Gebrauchtwagen zu fairen Preisen.">
     <meta name="keywords" content="KFZ Wolfram, Gebrauchtwagen, Auto, Händler, Bad Honnef, Autohandel, gebrauchte Autos">
     <meta name="author" content="KFZ Wolfram">
@@ -50,30 +61,143 @@
             "latitude": "50.6493",
             "longitude": "7.2285"
         },
-        "openingHours": "Mo-Sa 09:00-18:00"
+        "openingHours": "Mo-Sa 09:00-18:00",
+        "openingHoursSpecification": [
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+                "opens": "09:00",
+                "closes": "18:00"
+            }
+        ]
     }
     </script>
+
+    <!-- Enhanced breadcrumb schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
+            "@type": "ListItem",
+            "position": 1,
+            "name": "KFZ Wolfram",
+            "item": "https://kfzwolfram.de"
+        }]
+    }
+    </script>
+</head>
+<body>
+    <!-- Skip to main content link -->
+    <a href="#main-content" class="skip-to-main-content">Zum Hauptinhalt springen</a>
+
+    <header>
+        <a href="#" class="header-content">
+            <h1>KFZ Wolfram</h1>
+            <p>Ihr zuverlässiger Gebrauchtwagenhändler in Bad Honnef</p>
+        </a>
+    </header>
+
+    <main id="main-content" tabindex="-1">
+        <section id="car-listings" aria-labelledby="car-listings-heading">
+            <h2 id="car-listings-heading">Unsere aktuellen Gebrauchtwagen</h2>
+            <ul>
+                <li><a href="https://home.mobile.de/KFZWOLFRAM#ses" target="_blank" rel="noopener">Alle Fahrzeuge auf Mobile.de</a></li>
+                <li><a href="https://www.autoscout24.de/haendler/kfz-handel-wolfram-bad-honnef-rottbitze" target="_blank" rel="noopener">Alle Fahrzeuge auf AutoScout24.de</a></li>
+            </ul>
+        </section>
+
+        <section id="contact-info" aria-labelledby="contact-info-heading">
+            <h2 id="contact-info-heading">Kontakt</h2>
+            <ul>
+                <li><strong>Adresse:</strong> Rottbitzer Str. 32, 53604 Bad Honnef</li>
+                <li><strong>Telefon:</strong> <a href="tel:+4915205907647">+49 1520 5907647</a></li>
+                <li><strong>Email:</strong> <a href="mailto:info@kfzwolfram.de">info@kfzwolfram.de</a></li>
+                <li><strong>Öffnungszeiten:</strong> Montag-Samstag 09:00-18:00</li>
+            </ul>
+        </section>
+
+        <section id="google-maps" aria-labelledby="location-heading">
+            <h2 id="location-heading">Unser Standort</h2>
+            <!-- Map loading skeleton -->
+            <div class="map-skeleton"></div>
+            <div id="map"
+                aria-label="Standort von KFZ Wolfram"
+                role="application"
+                data-lat="50.6493"
+                data-lng="7.2285"
+                tabindex="0"
+                aria-description="Interaktive Karte mit unserem Standort in Bad Honnef. Nutzen Sie die Pfeiltasten zum Navigieren."></div>
+        </section>
+    </main>
+
+    <footer>
+        <nav>
+            <ul>
+                <li><a href="#contact-info">Kontakt</a></li>
+                <li><a href="#car-listings">Fahrzeuge</a></li>
+                <li><a href="impressum.html">Impressum</a></li>
+                <li><a href="datenschutz.html">Datenschutzerklärung</a></li>
+            </ul>
+        </nav>
+    </footer>
 
     <!-- Google Maps Implementation -->
     <script async defer>
         let map;
 
+        // Show loading skeleton
+        document.getElementById('google-maps').classList.add('map-loading');
+
         async function initMap() {
             const { Map } = await google.maps.importLibrary("maps");
             const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
 
-            const position = { lat: 50.6493, lng: 7.2285 };
+            const mapDiv = document.getElementById("map");
+            const position = {
+                lat: parseFloat(mapDiv.dataset.lat),
+                lng: parseFloat(mapDiv.dataset.lng)
+            };
 
-            map = new Map(document.getElementById("map"), {
+            map = new Map(mapDiv, {
                 zoom: 15,
                 center: position,
-                mapId: 'KFZ_WOLFRAM_MAP'
+                mapId: 'KFZ_WOLFRAM_MAP',
+                // Add keyboard controls
+                keyboardShortcuts: true
             });
 
             const marker = new AdvancedMarkerElement({
                 map: map,
                 position: position,
                 title: "KFZ Wolfram"
+            });
+
+            // Hide loading skeleton once map is loaded
+            document.getElementById('google-maps').classList.remove('map-loading');
+
+            // Add keyboard event listeners
+            mapDiv.addEventListener('keydown', (e) => {
+                switch(e.key) {
+                    case 'ArrowUp':
+                        map.panBy(0, -50);
+                        break;
+                    case 'ArrowDown':
+                        map.panBy(0, 50);
+                        break;
+                    case 'ArrowLeft':
+                        map.panBy(-50, 0);
+                        break;
+                    case 'ArrowRight':
+                        map.panBy(50, 0);
+                        break;
+                    case '+':
+                        map.setZoom(map.getZoom() + 1);
+                        break;
+                    case '-':
+                        map.setZoom(map.getZoom() - 1);
+                        break;
+                }
             });
         }
 
@@ -90,47 +214,5 @@
             return 'GOOGLE_MAPS_API_KEY';
         }
     </script>
-</head>
-<body>
-    <header>
-        <a href="#" class="header-content">
-            <h1>KFZ Wolfram</h1>
-            <p>Ihr zuverlässiger Gebrauchtwagenhändler in Bad Honnef</p>
-        </a>
-    </header>
-
-    <section id="car-listings">
-        <h2>Unsere aktuellen Gebrauchtwagen</h2>
-        <ul>
-            <li><a href="https://home.mobile.de/KFZWOLFRAM#ses" target="_blank" rel="noopener">Alle Fahrzeuge auf Mobile.de</a></li>
-            <li><a href="https://www.autoscout24.de/haendler/kfz-handel-wolfram-bad-honnef-rottbitze" target="_blank" rel="noopener">Alle Fahrzeuge auf AutoScout24.de</a></li>
-        </ul>
-    </section>
-
-    <section id="contact-info">
-        <h2>Kontakt</h2>
-        <ul>
-            <li><strong>Adresse:</strong> Rottbitzer Str. 32, 53604 Bad Honnef</li>
-            <li><strong>Telefon:</strong> <a href="tel:+4915205907647">+49 1520 5907647</a></li>
-            <li><strong>Email:</strong> <a href="mailto:info@kfzwolfram.de">info@kfzwolfram.de</a></li>
-            <li><strong>Öffnungszeiten:</strong> Montag-Samstag 09:00-18:00</li>
-        </ul>
-    </section>
-
-    <section id="google-maps">
-        <h2>Unser Standort</h2>
-        <div id="map" aria-label="Standort von KFZ Wolfram" role="application"></div>
-    </section>
-
-    <footer>
-        <nav>
-            <ul>
-                <li><a href="#contact-info">Kontakt</a></li>
-                <li><a href="#car-listings">Fahrzeuge</a></li>
-                <li><a href="impressum.html">Impressum</a></li>
-                <li><a href="datenschutz.html">Datenschutzerklärung</a></li>
-            </ul>
-        </nav>
-    </footer>
 </body>
 </html>

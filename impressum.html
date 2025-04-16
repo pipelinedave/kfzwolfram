@@ -3,13 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- DNS prefetch and preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Language alternates -->
+    <link rel="alternate" hreflang="de" href="https://kfzwolfram.de/impressum.html" />
+    <link rel="alternate" hreflang="x-default" href="https://kfzwolfram.de/impressum.html" />
+
     <title>Impressum - KFZ Wolfram</title>
     <!-- Material Icons -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="preload" href="style.css?v=1" as="style">
     <link rel="stylesheet" href="style.css?v=1">
+
+    <!-- Enhanced breadcrumb schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "KFZ Wolfram",
+                "item": "https://kfzwolfram.de"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Impressum",
+                "item": "https://kfzwolfram.de/impressum.html"
+            }
+        ]
+    }
+    </script>
 </head>
 <body>
+    <!-- Skip to main content link -->
+    <a href="#main-content" class="skip-to-main-content">Zum Hauptinhalt springen</a>
+
     <header>
         <a href="index.html" class="header-content">
             <h1>Impressum</h1>
@@ -17,26 +51,28 @@
         </a>
     </header>
 
-    <section>
-        <h2>Kontakt</h2>
-        <p>KFZ Wolfram<br>
-        Rottbitzer Str. 32<br>
-        53604 Bad Honnef<br>
-        Deutschland</p>
+    <main id="main-content" tabindex="-1">
+        <section aria-labelledby="contact-heading">
+            <h2 id="contact-heading">Kontakt</h2>
+            <p>KFZ Wolfram<br>
+            Rottbitzer Str. 32<br>
+            53604 Bad Honnef<br>
+            Deutschland</p>
 
-        <h3>Vertreten durch:</h3>
-        <p>Tobias Wolfram</p>
+            <h3>Vertreten durch:</h3>
+            <p>Tobias Wolfram</p>
 
-        <h3>Kontakt:</h3>
-        <p>Telefon: +49 1520 5907647<br>
-        E-Mail: info@kfz-wolfram.de</p>
+            <h3>Kontakt:</h3>
+            <p>Telefon: +49 1520 5907647<br>
+            E-Mail: info@kfz-wolfram.de</p>
 
-        <h3>Umsatzsteuer-ID:</h3>
-        <p>[Wird nachgereicht]</p>
+            <h3>Umsatzsteuer-ID:</h3>
+            <p>[Wird nachgereicht]</p>
 
-        <h3>Haftung für Inhalte</h3>
-        <p>Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.</p>
-    </section>
+            <h3>Haftung für Inhalte</h3>
+            <p>Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.</p>
+        </section>
+    </main>
 
     <footer>
         <p>Made by <a href="https://lowlifehigh.tech" target="_blank" rel="noopener">lowlifehigh.tech</a></p>
