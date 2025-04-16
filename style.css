@@ -542,11 +542,11 @@ button:focus-visible {
     gap: 0.5rem;
     padding: 0.75rem;
   }
-  
+
   #contact-info li strong {
     min-width: auto;
   }
-  
+
   #contact-info li::before {
     margin-bottom: 0.25rem;
   }
