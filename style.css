@@ -1,5 +1,6 @@
+/* Modern color palette with dark mode support */
 :root {
-  /* Modern color palette */
+  /* Light theme */
   --primary-color: #2563eb;
   --primary-light: #60a5fa;
   --primary-dark: #1e40af;
@@ -8,14 +9,25 @@
   --on-surface: #0f172a;
   --on-surface-variant: #475569;
   --accent: #f97316;
+  --card-bg: #ffffff;
+  --card-border: rgba(0,0,0,0.05);
+  --shadow-color: rgb(0 0 0 / 0.1);
+}
 
-  /* Typography */
-  --font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-
-  /* Elevation */
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary-color: #60a5fa;
+    --primary-light: #93c5fd;
+    --primary-dark: #2563eb;
+    --surface: #0f172a;
+    --surface-variant: #1e293b;
+    --on-surface: #f8fafc;
+    --on-surface-variant: #cbd5e1;
+    --accent: #fb923c;
+    --card-bg: #1e293b;
+    --card-border: rgba(255,255,255,0.05);
+    --shadow-color: rgb(0 0 0 / 0.3);
+  }
 }
 
 /* Reset and base styles */
@@ -37,6 +49,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Typography */
@@ -104,40 +117,49 @@ header p {
 
 /* Section styling */
 section {
-  padding: clamp(3rem, 8vh, 6rem) clamp(1rem, 5vw, 3rem);
-  border-radius: 24px;
-  margin: 2rem auto;
+  padding: clamp(2rem, 5vh, 4rem) clamp(1rem, 5vw, 3rem);
+  border-radius: 16px;
+  margin: 1rem auto;
   max-width: 1200px;
-  background: var(--surface);
-  box-shadow: var(--shadow-sm);
-  transition: box-shadow 0.3s ease;
+  background: var(--card-bg);
+  box-shadow: 0 1px 3px var(--shadow-color);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  border: 1px solid var(--card-border);
 }
 
 section:hover {
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 4px 6px var(--shadow-color);
+  transform: translateY(-2px);
 }
 
-/* Contact info styling */
+/* Contact info styling with icons */
 #contact-info ul {
+  list-style: none;
   display: grid;
-  gap: 1.5rem;
+  gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 
 #contact-info li {
   background: var(--surface-variant);
-  padding: 1.5rem;
-  border-radius: 16px;
-  box-shadow: var(--shadow-sm);
+  padding: 1.25rem;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
   transition: all 0.3s ease;
-  border: 1px solid rgba(0,0,0,0.05);
 }
 
-#contact-info li:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-  border-color: var(--primary-light);
+#contact-info li::before {
+  font-family: "Material Symbols Rounded";
+  font-size: 1.5rem;
+  color: var(--primary-color);
 }
+
+#contact-info li:nth-child(1)::before { content: "location_on"; }
+#contact-info li:nth-child(2)::before { content: "phone"; }
+#contact-info li:nth-child(3)::before { content: "mail"; }
+#contact-info li:nth-child(4)::before { content: "schedule"; }
 
 #contact-info a {
   color: var(--primary-color);
@@ -151,11 +173,16 @@ section:hover {
 }
 
 /* Car listings styling */
-#car-listings ul {
+#car-listings {
   display: grid;
-  gap: 1.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  margin-top: 2rem;
+  gap: 2rem;
+}
+
+#car-listings ul {
+  list-style: none;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
 #car-listings a {
@@ -193,6 +220,33 @@ section:hover {
   opacity: 1;
 }
 
+.car-feed {
+  background: var(--surface-variant);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-top: 1rem;
+  height: 600px;
+  border: 1px solid var(--card-border);
+}
+
+/* Section headers with icons */
+section h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  color: var(--primary-color);
+}
+
+section h2::before {
+  font-family: "Material Symbols Rounded";
+  font-size: 1.75rem;
+}
+
+#contact-info h2::before { content: "contact_page"; }
+#car-listings h2::before { content: "directions_car"; }
+#google-maps h2::before { content: "map"; }
+
 /* Maps styling */
 #google-maps {
   padding: 0;
@@ -200,18 +254,20 @@ section:hover {
 }
 
 #map {
-  height: 500px;
+  height: 400px;
   width: 100%;
-  border-radius: 24px;
-  box-shadow: var(--shadow-md);
+  border-radius: 16px;
+  box-shadow: 0 4px 6px var(--shadow-color);
+  transition: all 0.3s ease;
 }
 
 /* Footer styling */
 footer {
+  margin-top: auto;
   background: var(--surface-variant);
-  padding: 3rem 1rem;
+  padding: 2rem 1rem;
   text-align: center;
-  border-top: 1px solid rgba(0,0,0,0.05);
+  border-top: 1px solid var(--card-border);
 }
 
 footer p {
