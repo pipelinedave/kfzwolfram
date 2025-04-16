@@ -47,29 +47,21 @@
     </script>
 
     <!-- Google Maps Implementation -->
-    <script>
+    <script async defer>
         let map;
-
+        
         async function initMap() {
-            // Initialize the map instance
             const { Map } = await google.maps.importLibrary("maps");
             const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
-
+            
             const position = { lat: 50.6493, lng: 7.2285 };
-
+            
             map = new Map(document.getElementById("map"), {
                 zoom: 15,
                 center: position,
-                mapId: 'KFZ_WOLFRAM_MAP',
-                // Optional: Disable POI to focus on our location
-                styles: [{
-                    featureType: "poi",
-                    elementType: "labels",
-                    stylers: [{ visibility: "off" }]
-                }]
+                mapId: 'KFZ_WOLFRAM_MAP'
             });
 
-            // Create the marker using AdvancedMarkerElement
             const marker = new AdvancedMarkerElement({
                 map: map,
                 position: position,
@@ -77,20 +69,18 @@
             });
         }
 
-        // Load the Maps JavaScript API
-        function loadGoogleMaps() {
-            const script = document.createElement('script');
-            script.src = `https://maps.googleapis.com/maps/api/js?key=${getGoogleMapsKey()}&callback=initMap&v=weekly&libraries=maps,marker`;
-            script.defer = true;
-            document.head.appendChild(script);
-        }
+        // Load Maps API with proper async pattern
+        (g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})
+        ({key: getGoogleMapsKey()});
+
+        // Initialize map when libraries are loaded
+        window.addEventListener('DOMContentLoaded', () => {
+            google.maps.importLibrary("maps").then(() => initMap());
+        });
 
         function getGoogleMapsKey() {
             return 'GOOGLE_MAPS_API_KEY';
         }
-
-        // Load Maps API when the page is ready
-        window.addEventListener('DOMContentLoaded', loadGoogleMaps);
     </script>
 </head>
 <body>
@@ -103,17 +93,7 @@
 
     <section id="car-listings">
         <h2>Unsere aktuellen Gebrauchtwagen</h2>
-        <p>Entdecken Sie unsere Fahrzeuge direkt hier oder auf unseren Plattformen:</p>
-        <div class="car-feed">
-            <iframe
-                src="https://home.mobile.de/KFZWOLFRAM"
-                frameborder="0"
-                width="100%"
-                height="100%"
-                title="Unsere Fahrzeuge auf Mobile.de"
-                loading="lazy"
-            ></iframe>
-        </div>
+        <p>Besuchen Sie unsere Fahrzeuginserate auf diesen Plattformen:</p>
         <ul>
             <li><a href="https://home.mobile.de/KFZWOLFRAM#ses" target="_blank" rel="noopener">Alle Fahrzeuge auf Mobile.de</a></li>
             <li><a href="https://www.autoscout24.de/haendler/kfz-handel-wolfram-bad-honnef-rottbitze" target="_blank" rel="noopener">Alle Fahrzeuge auf AutoScout24.de</a></li>
@@ -136,7 +116,7 @@
     </section>
 
     <footer>
-        <p>&copy; 2025 KFZ Wolfram. Alle Rechte vorbehalten.</p>
+        <p>Made by <a href="https://lowlifehigh.tech" target="_blank" rel="noopener">lowlifehigh.tech</a></p>
         <nav>
             <ul>
                 <li><a href="#contact-info">Kontakt</a></li>
