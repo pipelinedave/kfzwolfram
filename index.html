@@ -42,36 +42,51 @@
     }
     </script>
 
-    <!-- Google Maps API -->
+    <!-- Google Maps Implementation -->
     <script>
-        // Load Google Maps API dynamically with key from environment
-        function loadGoogleMaps() {
-            const script = document.createElement('script');
-            script.src = `https://maps.googleapis.com/maps/api/js?key=${getGoogleMapsKey()}&callback=initMap`;
-            script.async = true;
-            document.head.appendChild(script);
-        }
+        let map;
 
-        function getGoogleMapsKey() {
-            // In production, this will be replaced with the actual key during CI/CD
-            return 'GOOGLE_MAPS_API_KEY';
-        }
+        async function initMap() {
+            // Initialize the map instance
+            const { Map } = await google.maps.importLibrary("maps");
+            const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
 
-        function initMap() {
-            const location = { lat: 50.6493, lng: 7.2285 };
-            const map = new google.maps.Map(document.getElementById("map"), {
+            const position = { lat: 50.6493, lng: 7.2285 };
+
+            map = new Map(document.getElementById("map"), {
                 zoom: 15,
-                center: location,
+                center: position,
+                mapId: 'KFZ_WOLFRAM_MAP',
+                // Optional: Disable POI to focus on our location
+                styles: [{
+                    featureType: "poi",
+                    elementType: "labels",
+                    stylers: [{ visibility: "off" }]
+                }]
             });
-            const marker = new google.maps.Marker({
-                position: location,
+
+            // Create the marker using AdvancedMarkerElement
+            const marker = new AdvancedMarkerElement({
                 map: map,
+                position: position,
                 title: "KFZ Wolfram"
             });
         }
 
+        // Load the Maps JavaScript API
+        function loadGoogleMaps() {
+            const script = document.createElement('script');
+            script.src = `https://maps.googleapis.com/maps/api/js?key=${getGoogleMapsKey()}&callback=initMap&v=weekly&libraries=maps,marker`;
+            script.defer = true;
+            document.head.appendChild(script);
+        }
+
+        function getGoogleMapsKey() {
+            return 'GOOGLE_MAPS_API_KEY';
+        }
+
         // Load Maps API when the page is ready
-        window.addEventListener('load', loadGoogleMaps);
+        window.addEventListener('DOMContentLoaded', loadGoogleMaps);
     </script>
 </head>
 <body>
