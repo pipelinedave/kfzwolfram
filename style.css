@@ -212,24 +212,32 @@ section:hover {
 #contact-info li {
   display: flex;
   align-items: flex-start;
-  gap: 0.5rem;
-  padding: 0.75rem;
+  gap: 0.75rem;
+  padding: 1rem;
   background: var(--surface-variant);
   border-radius: 12px;
-  line-height: 1.4;
-  /* Prevent text wrapping issues */
-  word-break: break-word;
-  hyphens: auto;
+  line-height: 1.5;
+  /* Improved text wrapping */
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: none;
 }
 
 #contact-info li strong {
-  flex-shrink: 0;
-  min-width: 70px;
+  flex: 0 0 auto;
+  min-width: 100px;
   font-size: 0.9em;
+  padding-right: 0.5rem;
 }
 
-#contact-info li::before {
-  flex-shrink: 0; /* Prevent icon from shrinking */
+#contact-info li span,
+#contact-info li a {
+  flex: 1;
+  min-width: 0;
+  /* Prevent awkward text breaks */
+  word-break: normal;
+  overflow-wrap: break-word;
 }
 
 #contact-info a {
@@ -243,6 +251,32 @@ section:hover {
 
 #contact-info a:hover {
   color: var(--primary-dark);
+}
+
+/* Adjust contact items on mobile screens */
+@media (max-width: 480px) {
+  #contact-info li {
+    padding: 0.875rem;
+    font-size: 0.95em;
+    gap: 0.5rem;
+  }
+
+  #contact-info li strong {
+    min-width: 90px;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 360px) {
+  #contact-info li {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  #contact-info li strong {
+    min-width: auto;
+    margin-bottom: 0.25rem;
+  }
 }
 
 /* Car listings styling */
