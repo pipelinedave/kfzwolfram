@@ -93,7 +93,7 @@ h2 {
 /* Header styling */
 header {
   background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-  padding: clamp(1rem, 4vh, 3rem) 1rem;
+  padding: 1.2rem 0.5rem;
   position: relative;
   overflow: hidden;
 }
@@ -124,11 +124,20 @@ header::before {
 
 header h1 {
   color: var(--surface);
-  font-size: clamp(2.5rem, 8vw, 4rem);
+  font-size: clamp(1.3rem, 4vw, 2rem);
   font-weight: 800;
   letter-spacing: -0.025em;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.2rem;
   text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.subtitle {
+  display: block;
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--surface);
+  opacity: 0.85;
+  margin-top: 0.2rem;
 }
 
 header p {
@@ -287,10 +296,9 @@ section {
 }
 
 #car-listings ul {
-  width: 100%;
-  box-sizing: border-box;
-  margin: 0;
+  list-style: none;
   padding: 0;
+  margin: 0;
   gap: 1.5rem;
   display: flex;
   flex-direction: column;
@@ -308,6 +316,11 @@ section {
   }
 }
 
+#car-listings li {
+  margin: 0;
+  padding: 0;
+}
+
 #car-listings a {
   display: block;
   padding: 1.25rem 2rem;
@@ -317,79 +330,147 @@ section {
   border-radius: 12px;
   text-align: center;
   font-weight: 500;
-  transition: all 0.3s ease;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
   position: relative;
   overflow: hidden;
-}
-
-#car-listings a::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, transparent, rgba(255,255,255,0.1));
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  box-shadow: 0 1px 3px var(--shadow-color);
 }
 
 #car-listings a:hover {
-  transform: translateY(-2px);
   background: var(--primary-dark);
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 4px 12px var(--shadow-color);
 }
 
-#car-listings a:hover::before {
-  opacity: 1;
+#car-listings li:first-child a {
+  background: #FF6600;
+  color: #fff;
 }
 
-.car-feed {
-  background: var(--surface-variant);
-  border-radius: 12px;
-  overflow: hidden;
+#car-listings li:last-child a {
+  background: #002f56;
+  color: #fff;
+}
+
+/* Services Section */
+.services-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
   margin-top: 1rem;
-  height: 600px;
-  border: 1px solid var(--card-border);
 }
 
-/* Platform-specific buttons */
-#car-listings li a {
+@media (min-width: 600px) {
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+.service-card {
+  background: var(--surface-variant);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 1px 4px var(--shadow-color);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.service-card:hover {
+  box-shadow: 0 4px 12px var(--shadow-color);
+  transform: translateY(-2px) scale(1.02);
+}
+
+.service-card h3 {
+  color: var(--primary-color);
+  font-size: 1.15rem;
+  margin: 0 0 0.5rem 0;
+}
+
+.service-card p {
+  color: var(--on-surface);
+  margin: 0 0 0.5rem 0;
+  flex-grow: 1;
+}
+
+.service-link {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  background: var(--primary-color);
+  color: var(--surface) !important;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 500;
+  text-align: center;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.service-link:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+/* Social Share Buttons */
+.social-share {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1rem 0;
+  margin: 1rem auto 0 auto;
+  max-width: 320px;
+}
+
+.social-share a {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
-  padding: 1rem 2rem;
-  border-radius: 8px;
-  font-weight: 500;
-  min-height: 3.5rem;
-  width: 100%;
-  white-space: nowrap;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--surface-variant);
+  transition: transform 0.2s, background 0.2s;
+  box-shadow: 0 1px 3px var(--shadow-color);
 }
 
-#car-listings li a::before {
-  content: '';
-  width: 24px;
-  height: 24px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
+.social-share a:hover {
+  transform: translateY(-2px) scale(1.08);
+  background: var(--primary-light);
 }
 
-/* Mobile.de styling */
-#car-listings li:first-child a {
-  background: #FF6600;
-  color: white;
+.social-icon {
+  width: 22px;
+  height: 22px;
+  fill: var(--primary-color);
+  transition: fill 0.2s;
 }
 
-/* AutoScout24 styling */
-#car-listings li:last-child a {
-  background: #002f56;
-  color: white;
+.social-share a:hover .social-icon.facebook {
+  fill: #1877f2;
 }
 
-#car-listings li a:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px var(--shadow-color);
+.social-share a:hover .social-icon.twitter {
+  fill: #1da1f2;
+}
+
+.social-share a:hover .social-icon.email {
+  fill: var(--primary-dark);
+}
+
+.social-share a:hover .social-icon.instagram {
+  fill: #e1306c;
+}
+
+.social-share a:hover .social-icon.tiktok {
+  fill: #000;
+}
+
+/* Animation Touches */
+button, a, .service-card {
+  transition: box-shadow 0.2s, transform 0.2s, background 0.2s, color 0.2s;
 }
 
 /* Section headers with icons */
@@ -575,6 +656,4 @@ footer a:hover {
   }
 }
 
-/* Responsive breakpoints */
-@media (max-width: 1024px) {
-  #contact
+/* End of stylesheet - all responsive and layout rules are now complete. */
