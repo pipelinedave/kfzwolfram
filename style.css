@@ -154,7 +154,6 @@ header p {
   max-width: 900px;
   margin: 0 auto;
   padding: 0 1rem;
-  box-sizing: border-box;
 }
 
 /* Section styling */
@@ -494,23 +493,88 @@ section h2::before {
 /* Maps styling */
 #google-maps {
   width: 100%;
-  max-width: 100%;
   margin: 1.5rem 0;
-  padding: 1.5rem 0.5rem;
+  padding: 0;
   box-sizing: border-box;
 }
 
 #google-maps:hover {
-  box-shadow: 0 4px 6px var(--shadow-color);
-  transform: translateY(-2px);
+  box-shadow: none;
+  transform: none;
 }
 
 #map {
-  height: 500px;
   width: 100% !important;
-  min-width: 0;
+  height: 400px;
   border-radius: 8px;
-  transition: all 0.3s ease;
+}
+
+@media (max-width: 704px) {
+  .container {
+    padding: 0;
+  }
+
+  section {
+    margin: 0;
+    padding: 1rem 0;
+    border-radius: 0;
+  }
+
+  #google-maps {
+    margin: 0;
+    width: 100%;
+  }
+
+  #map {
+    border-radius: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  #map {
+    height: 300px;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 0 0.5rem;
+  }
+
+  section {
+    padding: 1rem 0;
+    margin: 1rem 0;
+  }
+
+  #contact-info li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+    padding: 0.75rem;
+  }
+
+  #contact-info .label {
+    min-width: 0;
+    max-width: 100%;
+    margin-bottom: 0.15rem;
+  }
+
+  #contact-info ul {
+    grid-template-columns: 1fr;
+  }
+
+  #car-listings ul {
+    flex-direction: column;
+  }
+
+  #car-listings a {
+    display: block;
+    text-align: center;
+  }
+
+  #map {
+    height: 300px;
+  }
 }
 
 /* Map loading skeleton */
@@ -611,48 +675,6 @@ footer a:hover {
     flex-direction: column;
     align-items: center;
     gap: 1rem;
-  }
-}
-
-/* Mobile responsiveness */
-@media (max-width: 600px) {
-  .container {
-    padding: 0 0.5rem;
-  }
-
-  section {
-    padding: 1rem 0;
-    margin: 1rem 0;
-  }
-
-  #contact-info li {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.25rem;
-    padding: 0.75rem;
-  }
-
-  #contact-info .label {
-    min-width: 0;
-    max-width: 100%;
-    margin-bottom: 0.15rem;
-  }
-
-  #contact-info ul {
-    grid-template-columns: 1fr;
-  }
-
-  #car-listings ul {
-    flex-direction: column;
-  }
-
-  #car-listings a {
-    display: block;
-    text-align: center;
-  }
-
-  #map {
-    height: 300px;
   }
 }
 
