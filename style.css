@@ -153,20 +153,55 @@ header p {
   width: 100%;
   max-width: 900px;
   margin: 0 auto;
-  padding: 0 1rem;
-  box-sizing: border-box;
+  padding: 0;
+}
+
+main {
+  width: 100%;
+  margin: 0 auto;
+  padding: 1rem;
 }
 
 /* Section styling */
+.section-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  width: 100%;
+}
+
 section {
   width: 100%;
-  box-sizing: border-box;
-  margin: 1.5rem 0;
-  padding: 1.5rem 0;
+  margin: 2rem auto;
+  padding: 2rem;
   border-radius: 16px;
   background: var(--card-bg);
   box-shadow: 0 1px 3px var(--shadow-color);
   border: 1px solid var(--card-border);
+}
+
+/* Ensure consistent width for section content */
+section > * {
+  width: 100%;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Breadcrumb navigation */
+.breadcrumbs {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background: var(--surface-variant);
+  border-radius: 8px;
+}
+
+.breadcrumbs ol {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Breadcrumb navigation */
@@ -218,8 +253,9 @@ section {
   flex-direction: column;
   gap: 1rem;
   width: 100%;
+  max-width: 100%;
+  margin: 1.5rem auto;
   padding: 0;
-  margin: 0;
   list-style: none;
 }
 
@@ -302,6 +338,9 @@ section {
   gap: 1.5rem;
   display: flex;
   flex-direction: column;
+  width: 100%;
+  max-width: 100%;
+  margin: 1.5rem auto;
 }
 
 @media (min-width: 600px) {
@@ -358,7 +397,8 @@ section {
   flex-direction: column;
   gap: 1.5rem;
   width: 100%;
-  margin-top: 1rem;
+  max-width: 100%;
+  margin: 1.5rem auto;
 }
 
 @media (min-width: 600px) {
@@ -494,8 +534,8 @@ section h2::before {
 /* Maps styling */
 #google-maps {
   width: 100%;
-  max-width: 100%;
-  margin: 1.5rem 0;
+  max-width: 900px;
+  margin: 2rem auto;
   padding: 1.5rem 0.5rem;
   box-sizing: border-box;
 }
@@ -590,6 +630,12 @@ footer a:hover {
 }
 
 /* Responsive adjustments */
+@media (max-width: 940px) {
+  .container {
+    padding: 0 1rem;
+  }
+}
+
 @media (max-width: 768px) {
   section {
     border-radius: 16px;
@@ -614,15 +660,9 @@ footer a:hover {
   }
 }
 
-/* Mobile responsiveness */
 @media (max-width: 600px) {
   .container {
     padding: 0 0.5rem;
-  }
-
-  section {
-    padding: 1rem 0;
-    margin: 1rem 0;
   }
 
   #contact-info li {
