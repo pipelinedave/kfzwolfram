@@ -2,6 +2,7 @@
   "name": "KFZ Wolfram Landing Page",
   "dockerFile": "Dockerfile",
   "context": "..",
+  "forwardPorts": [3001],
   "customizations": {
     "vscode": {
       "extensions": [
@@ -11,7 +12,10 @@
       ],
       "settings": {
         "editor.defaultFormatter": "esbenp.prettier-vscode",
-        "html.format.wrapLineLength": 120
+        "html.format.wrapLineLength": 120,
+        "liveServer.settings.port": 3001,
+        "liveServer.settings.root": "/workspaces/kfzwolfram",
+        "liveServer.settings.CustomBrowser": "chrome"
       }
     }
   }
